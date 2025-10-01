@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors - Professional Portfolio Theme */
+    --background: 0 0% 100%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Primary - Professional Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 70%;
+    --primary-dark: 217 91% 50%;
+
+    /* Secondary - Subtle Grey */
+    --secondary: 215 15% 95%;
+    --secondary-foreground: 215 25% 25%;
+
+    /* Muted - Light Grey */
+    --muted: 215 15% 97%;
+    --muted-foreground: 215 15% 45%;
+
+    /* Accent - Professional Gold */
+    --accent: 45 93% 58%;
+    --accent-foreground: 215 25% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 15% 90%;
+    --input: 215 15% 92%;
+    --ring: 217 91% 60%;
+
+    /* Custom Portfolio Colors */
+    --hero-bg: 217 91% 60%;
+    --hero-gradient: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --section-bg: 215 15% 98%;
+    --text-primary: 215 25% 15%;
+    --text-secondary: 215 15% 45%;
+    --text-muted: 215 10% 60%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(215 15% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(215 15% 15% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(215 15% 15% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(215 15% 15% / 0.1);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode - Professional Portfolio Theme */
+    --background: 215 25% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 215 25% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 215 25% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 70%;
+    --primary-dark: 217 91% 50%;
+
+    --secondary: 215 15% 15%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 215 15% 12%;
+    --muted-foreground: 215 10% 60%;
+
+    --accent: 45 93% 58%;
+    --accent-foreground: 215 25% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 15% 20%;
+    --input: 215 15% 18%;
+    --ring: 217 91% 60%;
+
+    /* Custom Dark Colors */
+    --hero-bg: 215 25% 8%;
+    --hero-gradient: linear-gradient(135deg, hsl(215 25% 8%), hsl(215 25% 12%));
+    --section-bg: 215 25% 6%;
+    --text-primary: 0 0% 95%;
+    --text-secondary: 215 10% 70%;
+    --text-muted: 215 10% 50%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-dark));
+  }
+}
+
+@layer components {
+  /* Hero Section */
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .hero-text {
+    @apply text-white font-bold tracking-tight;
+  }
+
+  /* Section Backgrounds */
+  .section-primary {
+    @apply bg-background;
+  }
+
+  .section-secondary {
+    @apply bg-muted/30;
+  }
+
+  /* Interactive Elements */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 
+           px-6 py-3 rounded-xl font-semibold transition-all duration-300 
+           shadow-md hover:shadow-lg hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-primary text-primary 
+           hover:bg-primary hover:text-primary-foreground
+           px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border-2 border-current text-current 
+           hover:bg-current hover:text-background
+           px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+  }
+
+  /* Card Styles */
+  .card-elevated {
+    @apply bg-card border border-border rounded-xl shadow-md 
+           hover:shadow-lg transition-all duration-300 hover:scale-105;
+  }
+
+  .card-flat {
+    @apply bg-card border border-border rounded-xl;
+  }
+
+  /* Typography */
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  .heading-md {
+    @apply text-2xl md:text-3xl font-bold tracking-tight;
+  }
+
+  .heading-sm {
+    @apply text-xl md:text-2xl font-semibold tracking-tight;
+  }
+
+  .text-primary-custom {
+    @apply text-[hsl(var(--text-primary))];
+  }
+
+  .text-secondary-custom {
+    @apply text-[hsl(var(--text-secondary))];
+  }
+
+  .text-muted-custom {
+    @apply text-[hsl(var(--text-muted))];
+  }
+
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
