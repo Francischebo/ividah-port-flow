@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { Download, MessageCircle, ExternalLink } from 'lucide-react';
 import francisImage from '@/assets/francis-graduation-1.jpg';
+import { CVRequestDialog } from './CVRequestDialog';
 
 const Hero = () => {
+  const [showCVDialog, setShowCVDialog] = useState(false);
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -39,7 +43,10 @@ const Hero = () => {
                   View My Projects
                 </button>
                 
-                <button className="btn-outline border-white text-white hover:bg-white hover:text-primary">
+                <button 
+                  onClick={() => setShowCVDialog(true)}
+                  className="btn-outline border-white text-white hover:bg-white hover:text-primary"
+                >
                   <Download className="w-5 h-5 mr-2" />
                   Download My CV
                 </button>
@@ -81,6 +88,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <CVRequestDialog open={showCVDialog} onOpenChange={setShowCVDialog} />
     </section>
   );
 };
