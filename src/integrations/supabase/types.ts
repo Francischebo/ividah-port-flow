@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      cv_download_requests: {
+        Row: {
+          created_at: string
+          id: string
+          ip_address: string | null
+          requested_at: string
+          requester_email: string
+          requester_name: string
+          responded_at: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          requested_at?: string
+          requester_email: string
+          requester_name: string
+          responded_at?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          requested_at?: string
+          requester_email?: string
+          requester_name?: string
+          responded_at?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
