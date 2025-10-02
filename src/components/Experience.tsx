@@ -3,49 +3,20 @@ import { Calendar, MapPin, Building2 } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      company: 'Ukombozi Sacco Ltd',
-      position: 'ICT Support',
-      duration: '2023 - Present',
-      location: 'Nairobi, Kenya',
-      type: 'Full-time',
-      responsibilities: [
-        'Managed comprehensive IT infrastructure including network administration and system maintenance',
-        'Implemented and maintained systems for operational efficiency',
-        'Provided technical support for biometric systems and facility management technologies',
-        'Coordinated ICT procurement processes and vendor relations',
-        'Developed internal tools for streamlined operations and reporting'
-      ],
-      technologies: ['Network Administration', 'Inventory Systems', 'Biometrics', 'ERP Systems']
-    },
-    {
       company: 'Ecokleen Facility Management',
-      position: 'Procurement & CCTV Systems Specialist',
-      duration: '2022 - 2023',
+      position: 'Procurement & Logistics Specialist',
+      duration: 'June 2025 - Present',
       location: 'Nairobi, Kenya',
       type: 'Full-time',
       responsibilities: [
         'Led procurement processes for facility management equipment and supplies',
-        'Designed, installed, and maintained comprehensive CCTV surveillance systems',
-        'Managed vendor relationships and contract negotiations',
-        'Ensured compliance with facility management standards and regulations',
+        'Managed logistics operations and vendor relationships',
+        'Set up and configured CCTV systems at head office for enhanced security monitoring',
+        'Registered staff members to biometric access control systems',
+        'Troubleshot technical issues with facility management technologies',
         'Optimized procurement workflows to reduce costs and improve efficiency'
       ],
-      technologies: ['CCTV Systems', 'Procurement Software', 'Facility Management', 'Vendor Management']
-    },
-    {
-      company: 'Eagle Web E-Commerce',
-      position: 'Volunteer Web Developer',
-      duration: '2021 - 2022',
-      location: 'Remote',
-      type: 'Volunteer',
-      responsibilities: [
-        'Developed responsive e-commerce website features using modern web technologies',
-        'Collaborated with design team to implement user-friendly interfaces',
-        'Optimized website performance and implemented SEO best practices',
-        'Contributed to open-source projects and community initiatives',
-        'Gained valuable experience in agile development methodologies'
-      ],
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'E-commerce Platforms']
+      technologies: ['CCTV Systems', 'Biometric Systems', 'Procurement Software', 'Logistics Management', 'Vendor Management']
     },
     {
       company: 'Freelance Developer',
@@ -61,6 +32,36 @@ const Experience = () => {
         'Managed complete project lifecycle from requirements gathering to deployment'
       ],
       technologies: ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'Python', 'AI/ML']
+    },
+    {
+      company: 'Ukombozi Sacco Ltd',
+      position: 'ICT Support',
+      duration: 'May 2023 - August 2023',
+      location: 'Nairobi, Kenya',
+      type: 'Full-time',
+      responsibilities: [
+        'Managed comprehensive IT infrastructure including network administration and system maintenance',
+        'Provided technical support for hardware and software systems',
+        'Maintained biometric systems and facility management technologies',
+        'Ensured system uptime and resolved technical issues promptly',
+        'Developed internal tools for streamlined operations and reporting'
+      ],
+      technologies: ['Network Administration', 'IT Support', 'Biometrics', 'System Maintenance', 'Hardware Troubleshooting']
+    },
+    {
+      company: 'Eagle Web E-Commerce',
+      position: 'Volunteer Web Developer',
+      duration: '2021 - 2022',
+      location: 'Remote',
+      type: 'Volunteer',
+      responsibilities: [
+        'Developed responsive e-commerce website features using modern web technologies',
+        'Collaborated with design team to implement user-friendly interfaces',
+        'Optimized website performance and implemented SEO best practices',
+        'Contributed to open-source projects and community initiatives',
+        'Gained valuable experience in agile development methodologies'
+      ],
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'E-commerce Platforms']
     }
   ];
 
