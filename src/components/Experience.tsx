@@ -37,7 +37,7 @@ const Experience = () => {
       company: 'Ukombozi Sacco Ltd',
       position: 'ICT Support',
       duration: 'May 2023 - August 2023',
-      location: 'Nairobi, Kenya',
+      location: 'Nakuru, Kenya',
       type: 'Full-time',
       responsibilities: [
         'Managed comprehensive IT infrastructure including network administration and system maintenance',
