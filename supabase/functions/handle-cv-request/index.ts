@@ -73,18 +73,28 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification email to admin
     try {
+      const approveUrl = `${supabaseUrl}/functions/v1/handle-cv-approval?action=approve&requestId=${requestData.id}`;
+      const rejectUrl = `${supabaseUrl}/functions/v1/handle-cv-approval?action=reject&requestId=${requestData.id}`;
+      
       const emailResponse = await resend.emails.send({
         from: "CV Request <onboarding@resend.dev>",
         to: [adminEmail],
         subject: `New CV Download Request from ${name}`,
         html: `
-          <h2>New CV Download Request</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>IP Address:</strong> ${ipAddress}</p>
-          <p><strong>Requested at:</strong> ${new Date().toLocaleString()}</p>
-          <hr>
-          <p>Please review and respond to this request.</p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #333;">New CV Download Request</h2>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>IP Address:</strong> ${ipAddress}</p>
+              <p><strong>Requested at:</strong> ${new Date().toLocaleString()}</p>
+            </div>
+            <div style="margin: 30px 0; text-align: center;">
+              <a href="${approveUrl}" style="display: inline-block; padding: 12px 30px; background-color: #10b981; color: white; text-decoration: none; border-radius: 6px; margin: 0 10px; font-weight: bold;">Approve & Send CV</a>
+              <a href="${rejectUrl}" style="display: inline-block; padding: 12px 30px; background-color: #ef4444; color: white; text-decoration: none; border-radius: 6px; margin: 0 10px; font-weight: bold;">Reject Request</a>
+            </div>
+            <p style="color: #666; font-size: 14px; margin-top: 20px;">Click one of the buttons above to respond to this request.</p>
+          </div>
         `,
       });
 

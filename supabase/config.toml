@@ -2,3 +2,6 @@ project_id = "okbnlzdefzeqxtmauuew"
 
 [functions.handle-cv-request]
 verify_jwt = false
+
+[functions.handle-cv-approval]
+verify_jwt = false
