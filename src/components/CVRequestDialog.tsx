@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { Loader2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
@@ -15,15 +16,16 @@ interface CVRequestDialogProps {
 export const CVRequestDialog = ({ open, onOpenChange }: CVRequestDialogProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [reason, setReason] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!name.trim() || !email.trim()) {
+    if (!name.trim() || !email.trim() || !reason.trim()) {
       toast({
         title: "Missing Information",
-        description: "Please provide both your name and email address.",
+        description: "Please provide your name, email, and reason for requesting.",
         variant: "destructive",
       });
       return;
@@ -33,7 +35,11 @@ export const CVRequestDialog = ({ open, onOpenChange }: CVRequestDialogProps) =>
 
     try {
       const { data, error } = await supabase.functions.invoke('handle-cv-request', {
-        body: { name: name.trim(), email: email.trim() },
+        body: { 
+          name: name.trim(), 
+          email: email.trim(),
+          reason: reason.trim()
+        },
       });
 
       if (error) throw error;
@@ -45,6 +51,7 @@ export const CVRequestDialog = ({ open, onOpenChange }: CVRequestDialogProps) =>
 
       setName('');
       setEmail('');
+      setReason('');
       onOpenChange(false);
     } catch (error: any) {
       console.error('CV request error:', error);
@@ -91,6 +98,18 @@ export const CVRequestDialog = ({ open, onOpenChange }: CVRequestDialogProps) =>
               disabled={isSubmitting}
             />
           </div>
+          <div className="space-y-2">
+            <Label htmlFor="reason">Reason for Request / Opportunity</Label>
+            <Textarea
+              id="reason"
+              placeholder="e.g., Job opportunity, collaboration, consulting project..."
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              required
+              disabled={isSubmitting}
+              rows={4}
+            />
+          </div>
           <div className="flex justify-end gap-3 pt-4">
             <Button
               type="button"
@@ -102,7 +121,7 @@ export const CVRequestDialog = ({ open, onOpenChange }: CVRequestDialogProps) =>
             </Button>
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
-              Submit Request
+              Request CV
             </Button>
           </div>
         </form>

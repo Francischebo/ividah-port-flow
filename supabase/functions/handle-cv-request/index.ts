@@ -15,6 +15,7 @@ const corsHeaders = {
 interface CVRequest {
   name: string;
   email: string;
+  reason: string;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -23,14 +24,14 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email }: CVRequest = await req.json();
+    const { name, email, reason }: CVRequest = await req.json();
 
-    console.log("Received CV request:", { name, email });
+    console.log("Received CV request:", { name, email, reason });
 
     // Validate input
-    if (!name || !email) {
+    if (!name || !email || !reason) {
       return new Response(
-        JSON.stringify({ error: "Name and email are required" }),
+        JSON.stringify({ error: "Name, email, and reason are required" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -86,6 +87,8 @@ const handler = async (req: Request): Promise<Response> => {
             <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
               <p><strong>Name:</strong> ${name}</p>
               <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Reason/Opportunity:</strong></p>
+              <p style="background-color: white; padding: 12px; border-radius: 4px; margin: 8px 0;">${reason}</p>
               <p><strong>IP Address:</strong> ${ipAddress}</p>
               <p><strong>Requested at:</strong> ${new Date().toLocaleString()}</p>
             </div>
