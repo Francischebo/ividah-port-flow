@@ -25,12 +25,12 @@ const Footer = () => {
   ];
 
   const services = [
-    'Full-Stack Development',
-    'ICT Support & Maintenance',
-    'System Integration',
-    'Web Application Development',
-    'Database Design',
-    'Network Administration'
+    'POS Systems',
+    'Web Design',
+    'Graphic Design',
+    'Digital Marketing',
+    'CCTV Installation',
+    'IT Support'
   ];
 
   const socialLinks = [
